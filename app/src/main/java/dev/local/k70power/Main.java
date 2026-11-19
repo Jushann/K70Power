@@ -86,7 +86,7 @@ public class Main extends Activity {
  label(c,"每 2 秒采样。功率为电压 × 电流估算；电池电流方向以设备驱动为准。旁路请求使用现有充电节点，硬件直供效果仍需实测。\n电量模式按 N/M 判断；其他模式保留 25% 下限。达到 45°C 时退出暂停，系统温控保持有效。\n开机首次解锁后，LSP 激活时自动启动监测，并恢复上次控制开关与模式。LSP 需启用模块并勾选本应用作用域；系统需允许自启动。Root 需在 KernelSU 中授权。",14,MUTED);
  enable.setOnCheckedChangeListener((v,on)->{if(!syncing)start(on?selected():"observe");});
  threshold.setOnCheckedChangeListener((v,on)->{prefs().edit().putBoolean("threshold",on).apply();if(enable.isChecked())start(selected());});
- label(settings,"电源管理  ·  v0.11",13,MUTED).setGravity(Gravity.CENTER);
+ label(settings,"电源管理  ·  v0.12",13,MUTED).setGravity(Gravity.CENTER);
  LinearLayout nav = new LinearLayout(this);
  nav.setPadding(dp(12), dp(4), dp(12), dp(4));
  root.addView(nav);
@@ -148,6 +148,7 @@ public class Main extends Activity {
   switch (Build.DEVICE) {
    case "manet": return "Redmi K70 Pro";
    case "socrates": return "Redmi K60 Pro · 实验适配";
+   case "myron": return "Redmi K90 Pro Max · 实验适配";
    case "peridot": return "Redmi Turbo 3 / POCO F6 · 实验适配";
    default: return Build.MODEL;
   }

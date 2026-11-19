@@ -24,7 +24,7 @@ aligned=build/'aligned.apk'
 run(bt/'zipalign.exe','-f','-p','4',unsigned,aligned)
 key=base/'local-test-key.p12'
 if not key.exists():run(java/'keytool.exe','-genkeypair','-keystore',key,'-storepass','local-test-only','-keypass','local-test-only','-alias','k70power','-keyalg','RSA','-keysize','3072','-validity','3650','-dname','CN=K70Power Local Test')
-out=base/'out/K70Power-0.11-test.apk';out.parent.mkdir(exist_ok=True)
+out=base/'out/K70Power-0.12-test.apk';out.parent.mkdir(exist_ok=True)
 run(java/'java.exe','-jar',bt/'lib/apksigner.jar','sign','--ks',key,'--ks-pass','pass:local-test-only','--ks-key-alias','k70power','--out',out,aligned)
 run(java/'java.exe','-jar',bt/'lib/apksigner.jar','verify','--verbose','--print-certs',out)
 run(bt/'zipalign.exe','-c','-v','4',out)
