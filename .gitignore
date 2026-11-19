@@ -1,0 +1,9 @@
+build/
+out/
+*.p12
+*.jks
+*.keystore
+*.apk
+*.idsig
+local.properties
+__pycache__/

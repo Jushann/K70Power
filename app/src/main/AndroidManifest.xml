@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.local.k70power" android:versionCode="10" android:versionName="0.10-test">
+<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/><uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/><uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+<application android:label="K70 电源控制" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:supportsRtl="true">
+<meta-data android:name="xposedmodule" android:value="true"/><meta-data android:name="xposeddescription" android:value="K70 Pro 充电暂停控制；Root 执行，旁路供电需实测"/><meta-data android:name="xposedminversion" android:value="82"/><meta-data android:name="xposedscope" android:resource="@array/xposed_scope"/>
+<activity android:name=".Main" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+<service android:name=".Control" android:exported="false" android:foregroundServiceType="specialUse"><property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User enabled rooted charging control with recovery watchdog"/></service>
+<receiver android:name=".BootReceiver" android:exported="true"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED"/></intent-filter></receiver>
+</application></manifest>
+
