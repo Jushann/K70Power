@@ -1,11 +1,19 @@
 # 基于Lspose的直供电模块
 
-适用于红米 K70 Pro（manet）的充电控制与电源监测工具，已在 Android 16、澎湃 OS 3 和 LSPosed 2.0.2 环境测试。
+红米手机充电控制与电源监测工具。K70 Pro（manet）已在 Android 16、澎湃 OS 3 和 LSPosed 2.0.2 环境安装测试。
+
+| 机型 | 代号 | 验证范围 |
+| --- | --- | --- |
+| Redmi K70 Pro | manet | 已在实机安装 |
+| Redmi K60 Pro | socrates | 实验适配，通过模拟节点测试。参考[该机型的充电控制项目](https://github.com/QiZhi-yi/bypass-charger)。 |
+| Redmi Turbo 3 / POCO F6 | peridot | 实验适配，通过模拟节点测试。[部分 ROM 的变更记录](https://github.com/poco-f6-peridot/Updater-Stuff-QPR2/blob/main/changelog_peridot.txt)提到旁路仅在电量高于 80% 时生效。 |
+
+模块会核对机型代号、充电接口权限及读数。相同机型的不同内核可能提供不同接口，缺少所需接口时会显示原因并停止控制。
 
 开启直供电总开关后，可按自定义电量区间控制充电。电量达到上限 M 时请求旁路，降至下限 N 时恢复充电。实时电源卡显示电池与 USB 输入侧的电压、电流、估算功率及 CPU 热区温度。
 
 充电控制需要 Root 权限，通过 `night_charging` 节点请求暂停充电。界面中的直供电状态反映节点读数，实际供电路径仍需硬件测量确认。
-## 构建 0.10 测试版
+## 构建 0.11 测试版
 
 在 Windows 上安装 Python 3、JDK 17、Android SDK Platform 36 和 Android SDK Build Tools 36。准备 [Xposed API 82](https://api.xposed.info/repo/de/robv/android/xposed/api/82/api-82.jar) 作为编译依赖。
 

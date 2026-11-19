@@ -17,7 +17,26 @@ cleanup() {
  fi
 }
 trap cleanup EXIT HUP INT TERM
-[ "$(getprop ro.product.device)" = manet ] || { echo 'ERROR: device mismatch'; exit 1; }
+# Device families using the same binary Qualcomm charging control.
+device=$(getprop ro.product.device)
+case "$device" in
+ manet|socrates|peridot) ;;
+ *) echo "当前机型尚未适配：$device"; exit 1 ;;
+esac
+if [ ! -r "$n" ] || [ ! -w "$n" ]; then
+ echo "当前内核未提供可读写的 night_charging 接口：$device"
+ exit 1
+fi
+case "$(cat "$n" 2>/dev/null)" in
+ 0|1) ;;
+ *) echo "无法识别充电接口状态：$device"; exit 1 ;;
+esac
+for sensor in "$b/capacity" "$b/temp" "$u/online"; do
+ if [ ! -r "$sensor" ]; then
+  echo "当前内核缺少控制所需的读数：$sensor"
+  exit 1
+ fi
+done
 cpu_zones=
 for zone in /sys/class/thermal/thermal_zone*; do
  kind=$(cat "$zone/type" 2>/dev/null)

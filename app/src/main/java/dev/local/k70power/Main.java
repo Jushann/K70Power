@@ -70,7 +70,7 @@ public class Main extends Activity {
  LinearLayout settings = addPage(root, settingsPage, 0x31004);
  setContentView(root);
  root.requestApplyInsets();
- label(box,"K70 电源控制",34,TEXT);label(box,"Redmi K70 Pro · 电量与供电管理",16,MUTED);
+ label(box,"红米电源控制",34,TEXT);label(box,deviceName()+" · 电量与供电管理",16,MUTED);
  section(box,"实时电源");LinearLayout c=card(box);battery=label(c,"电池 · 等待读数",19,TEXT);cpu=label(c,"CPU 温度：等待读数",16,TEXT);supply=label(c,"电源当前是否为直供电：未知",16,dark?0xff92baff:0xff2563eb);label(c,"按旁路控制节点判断，仅表示软件控制状态，非硬件直供确认。",12,MUTED);line(c);usb=label(c,"USB 输入 · 等待读数",19,TEXT);
  section(box,"运行状态");c=card(box);status=label(c,"正在连接…",16,TEXT);
  label(c,"开机自启："+(Activation.active()?"LSP 已激活，开机首次解锁后启动":"等待 LSP 激活及本应用作用域"),14,ACCENT);
@@ -83,10 +83,10 @@ public class Main extends Activity {
  
  appearanceSettings(settings);
  section(settings,"监测与说明");c=card(settings);button(c,"启动监测",()->start("monitor"));button(c,"停止并恢复充电",()->{prefs().edit().putString("resume_mode","observe").apply();stopService(new Intent(this,Control.class));});
- label(c,"每 2 秒采样。功率为电压 × 电流估算；电池负电流表示充入。旁路请求使用现有充电节点，硬件直供效果仍需实测。\n电量模式按 N/M 判断；其他模式保留 25% 下限。达到 45°C 时退出暂停，系统温控保持有效。\n开机首次解锁后，LSP 激活时自动启动监测，并恢复上次控制开关与模式。LSP 需启用模块并勾选本应用作用域；系统需允许自启动。Root 需在 KernelSU 中授权。",14,MUTED);
+ label(c,"每 2 秒采样。功率为电压 × 电流估算；电池电流方向以设备驱动为准。旁路请求使用现有充电节点，硬件直供效果仍需实测。\n电量模式按 N/M 判断；其他模式保留 25% 下限。达到 45°C 时退出暂停，系统温控保持有效。\n开机首次解锁后，LSP 激活时自动启动监测，并恢复上次控制开关与模式。LSP 需启用模块并勾选本应用作用域；系统需允许自启动。Root 需在 KernelSU 中授权。",14,MUTED);
  enable.setOnCheckedChangeListener((v,on)->{if(!syncing)start(on?selected():"observe");});
  threshold.setOnCheckedChangeListener((v,on)->{prefs().edit().putBoolean("threshold",on).apply();if(enable.isChecked())start(selected());});
- label(settings,"电源管理  ·  v0.10",13,MUTED).setGravity(Gravity.CENTER);
+ label(settings,"电源管理  ·  v0.11",13,MUTED).setGravity(Gravity.CENTER);
  LinearLayout nav = new LinearLayout(this);
  nav.setPadding(dp(12), dp(4), dp(12), dp(4));
  root.addView(nav);
@@ -143,6 +143,14 @@ public class Main extends Activity {
  @Override protected void onSaveInstanceState(Bundle state) {
   super.onSaveInstanceState(state);
   state.putBoolean("settings_page", viewingSettings);
+ }
+ private String deviceName() {
+  switch (Build.DEVICE) {
+   case "manet": return "Redmi K70 Pro";
+   case "socrates": return "Redmi K60 Pro · 实验适配";
+   case "peridot": return "Redmi Turbo 3 / POCO F6 · 实验适配";
+   default: return Build.MODEL;
+  }
  }
  private String selected(){return threshold.isChecked()?"threshold":"auto";}
  private void save(){try{int n=Integer.parseInt(lower.getText().toString()),m=Integer.parseInt(upper.getText().toString());if(n<1||n>75){lower.setError("请输入 1–75 的整数");return;}if(m<76||m>100){upper.setError("请输入 76–100 的整数");return;}prefs().edit().putInt("low",n).putInt("high",m).apply();updateRule();if(enable.isChecked())start(selected());Toast.makeText(this,"触发条件已保存",Toast.LENGTH_SHORT).show();}catch(NumberFormatException e){Toast.makeText(this,"请填写整数电量",Toast.LENGTH_SHORT).show();}}

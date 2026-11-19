@@ -14,7 +14,7 @@ public class Control extends Service {
  public void onCreate(){super.onCreate(); NotificationManager nm=getSystemService(NotificationManager.class);nm.createNotificationChannel(new NotificationChannel("control","充电控制",NotificationManager.IMPORTANCE_LOW));
  PendingIntent open=PendingIntent.getActivity(this,0,new Intent(this,Main.class),PendingIntent.FLAG_IMMUTABLE);
  PendingIntent stop=PendingIntent.getService(this,1,new Intent(this,Control.class).setAction("stop"),PendingIntent.FLAG_IMMUTABLE);
- startForeground(1,new Notification.Builder(this,"control").setSmallIcon(android.R.drawable.ic_lock_idle_charging).setContentTitle("K70 电源监测运行中").setContentText("每 2 秒采样；停止后恢复并退出监测").setContentIntent(open).addAction(new Notification.Action.Builder(null,"停止并恢复",stop).build()).setOngoing(true).build());
+ startForeground(1,new Notification.Builder(this,"control").setSmallIcon(android.R.drawable.ic_lock_idle_charging).setContentTitle("红米电源监测运行中").setContentText("每 2 秒采样；停止后恢复并退出监测").setContentIntent(open).addAction(new Notification.Action.Builder(null,"停止并恢复",stop).build()).setOngoing(true).build());
  }
  public int onStartCommand(Intent i,int flags,int id){
  if(i==null || "stop".equals(i.getAction())){if(i!=null)getSharedPreferences("policy",0).edit().putString("resume_mode","observe").apply();stopSelf();return START_NOT_STICKY;}
