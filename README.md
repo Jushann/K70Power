@@ -1,4 +1,4 @@
-# 基于Lspose的直供电模块
+# 基于Lsposed的红米手机直供电模块
 
 红米手机充电控制与电源监测工具。K70 Pro（manet）已在 Android 16、澎湃 OS 3 和 LSPosed 2.0.2 环境安装测试。
 
