@@ -1,0 +1,89 @@
+<resources>
+    <string name="mist" formatted="false">"雾蓝"</string>
+    <string name="pine" formatted="false">"松绿"</string>
+    <string name="wisteria" formatted="false">"紫藤"</string>
+    <string name="clay" formatted="false">"赤陶"</string>
+    <string name="system_mode" formatted="false">"跟随系统"</string>
+    <string name="light" formatted="false">"浅色"</string>
+    <string name="dark" formatted="false">"深色"</string>
+    <string name="cancel" formatted="false">"取消"</string>
+    <string name="appearance" formatted="false">"外观"</string>
+    <string name="mode_prefix" formatted="false">"显示模式 · "</string>
+    <string name="display_mode" formatted="false">"显示模式"</string>
+    <string name="color_prefix" formatted="false">"主题配色 · "</string>
+    <string name="theme_color" formatted="false">"主题配色"</string>
+    <string name="waiting_device" formatted="false">"等待读取设备数据"</string>
+    <string name="cpu_wait" formatted="false">"CPU 温度：等待读数"</string>
+    <string name="bypass_wait" formatted="false">"电源当前是否为直供电：未知（等待读数）"</string>
+    <string name="history" formatted="false">" · 历史读数"</string>
+    <string name="bypass" formatted="false">"电源当前是否为直供电："</string>
+    <string name="expired" formatted="false">"未知（读数已过期）"</string>
+    <string name="yes" formatted="false">"是"</string>
+    <string name="no" formatted="false">"否"</string>
+    <string name="cpu_peak" formatted="false">"CPU 温度（最高热区）："</string>
+    <string name="sensor" formatted="false">"\n传感器："</string>
+    <string name="cpu_unavailable" formatted="false">"CPU 温度：不可读取"</string>
+    <string name="battery" formatted="false">"电池"</string>
+    <string name="net_power" formatted="false">"\n净功率  "</string>
+    <string name="level" formatted="false">"\n电量 "</string>
+    <string name="temperature" formatted="false">"%    温度 "</string>
+    <string name="usb" formatted="false">"USB 输入"</string>
+    <string name="input_power" formatted="false">"\n输入功率  "</string>
+    <string name="unplugged" formatted="false">"未接入"</string>
+    <string name="requested" formatted="false">"已请求旁路 / 暂停充电"</string>
+    <string name="normal" formatted="false">"正常充电 / 未请求旁路"</string>
+    <string name="connected" formatted="false">"已连接"</string>
+    <string name="disconnected" formatted="false">"未连接"</string>
+    <string name="seconds_ago" formatted="false">" 秒前更新"</string>
+    <string name="stale" formatted="false">"（已过期）"</string>
+    <string name="root_service" formatted="false">"\nRoot 服务 "</string>
+    <string name="running" formatted="false">"运行中"</string>
+    <string name="stopped" formatted="false">"未运行"</string>
+    <string name="active" formatted="false">"已激活"</string>
+    <string name="inactive" formatted="false">"未激活"</string>
+    <string name="app_title" formatted="false">"红米电源控制"</string>
+    <string name="subtitle" formatted="false">" · 电量与供电管理"</string>
+    <string name="live_power" formatted="false">"实时电源"</string>
+    <string name="battery_wait" formatted="false">"电池 · 等待读数"</string>
+    <string name="bypass_unknown" formatted="false">"电源当前是否为直供电：未知"</string>
+    <string name="hardware_note" formatted="false">"按旁路控制节点判断，仅表示软件控制状态，非硬件直供确认。"</string>
+    <string name="usb_wait" formatted="false">"USB 输入 · 等待读数"</string>
+    <string name="status" formatted="false">"运行状态"</string>
+    <string name="connecting" formatted="false">"正在连接…"</string>
+    <string name="boot" formatted="false">"开机自启："</string>
+    <string name="boot_active" formatted="false">"LSP 已激活，开机首次解锁后启动"</string>
+    <string name="boot_inactive" formatted="false">"等待 LSP 激活及本应用作用域"</string>
+    <string name="controls" formatted="false">"控制选项"</string>
+    <string name="master" formatted="false">"直供电总开关"</string>
+    <string name="master_hint" formatted="false">"开启后插电自动执行；关闭后恢复充电"</string>
+    <string name="settings" formatted="false">"设置"</string>
+    <string name="thresholds" formatted="false">"电量触发条件"</string>
+    <string name="range_toggle" formatted="false">"电量区间触发"</string>
+    <string name="range_hint" formatted="false">"开启按 N/M 控制；关闭则插电请求旁路"</string>
+    <string name="resume_at" formatted="false">"恢复充电 · N%"</string>
+    <string name="bypass_at" formatted="false">"切换旁路 · M%"</string>
+    <string name="save" formatted="false">"保存触发条件"</string>
+    <string name="cycle_hint" formatted="false">"首次开启或重新插电时，电量低于 M% 先充电；达到 M% 请求旁路，降到 N% 再恢复充电。"</string>
+    <string name="monitor_info" formatted="false">"监测与说明"</string>
+    <string name="monitor_start" formatted="false">"启动监测"</string>
+    <string name="monitor_stop" formatted="false">"停止并恢复充电"</string>
+    <string name="notes" formatted="false">"每 2 秒采样。功率为电压 × 电流估算；电池电流方向以设备驱动为准。旁路请求使用现有充电节点，硬件直供效果仍需实测。\n电量模式按 N/M 判断；其他模式保留 25% 下限。达到 45°C 时退出暂停，系统温控保持有效。\n开机首次解锁后，LSP 激活时自动启动监测，并恢复上次控制开关与模式。LSP 需启用模块并勾选本应用作用域；系统需允许自启动。Root 需在 KernelSU 中授权。"</string>
+    <string name="version" formatted="false">"电源管理  ·  v0.13"</string>
+    <string name="power" formatted="false">"电源"</string>
+    <string name="socrates" formatted="false">"Redmi K60 Pro · 实验适配"</string>
+    <string name="myron" formatted="false">"Redmi K90 Pro Max · 实验适配"</string>
+    <string name="peridot" formatted="false">"Redmi Turbo 3 / POCO F6 · 实验适配"</string>
+    <string name="invalid_low" formatted="false">"请输入 1–75 的整数"</string>
+    <string name="invalid_high" formatted="false">"请输入 76–100 的整数"</string>
+    <string name="saved" formatted="false">"触发条件已保存"</string>
+    <string name="invalid_number" formatted="false">"请填写整数电量"</string>
+    <string name="rule_start" formatted="false">"已保存：≤ "</string>
+    <string name="rule_middle" formatted="false">"% 恢复充电 → ≥ "</string>
+    <string name="rule_end" formatted="false">"% 请求旁路"</string>
+    <string name="language_title" formatted="false">"界面语言 / Language"</string>
+    <string name="language_label" formatted="false">"界面语言 · 简体中文 / English"</string>
+    <string name="channel" formatted="false">"充电控制"</string>
+    <string name="notification" formatted="false">"红米电源监测运行中"</string>
+    <string name="notification_info" formatted="false">"每 2 秒采样；停止后恢复并退出监测"</string>
+    <string name="notification_stop" formatted="false">"停止并恢复"</string>
+</resources>

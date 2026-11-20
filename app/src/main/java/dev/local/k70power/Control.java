@@ -11,10 +11,12 @@ public class Control extends Service {
  private final ScheduledExecutorService worker=Executors.newSingleThreadScheduledExecutor();
  private volatile boolean stopping=false;
  public IBinder onBind(Intent i){return null;}
- public void onCreate(){super.onCreate(); NotificationManager nm=getSystemService(NotificationManager.class);nm.createNotificationChannel(new NotificationChannel("control","充电控制",NotificationManager.IMPORTANCE_LOW));
+ public void onCreate(){super.onCreate(); getSharedPreferences("policy",0).registerOnSharedPreferenceChangeListener(languageListener); showNotification(); }
+ private final SharedPreferences.OnSharedPreferenceChangeListener languageListener=(p,k)->{if("language".equals(k))showNotification();};
+ private void showNotification(){Context ui=Language.context(this); NotificationManager nm=getSystemService(NotificationManager.class);nm.createNotificationChannel(new NotificationChannel("control",ui.getString(R.string.channel),NotificationManager.IMPORTANCE_LOW));
  PendingIntent open=PendingIntent.getActivity(this,0,new Intent(this,Main.class),PendingIntent.FLAG_IMMUTABLE);
  PendingIntent stop=PendingIntent.getService(this,1,new Intent(this,Control.class).setAction("stop"),PendingIntent.FLAG_IMMUTABLE);
- startForeground(1,new Notification.Builder(this,"control").setSmallIcon(android.R.drawable.ic_lock_idle_charging).setContentTitle("红米电源监测运行中").setContentText("每 2 秒采样；停止后恢复并退出监测").setContentIntent(open).addAction(new Notification.Action.Builder(null,"停止并恢复",stop).build()).setOngoing(true).build());
+ startForeground(1,new Notification.Builder(this,"control").setSmallIcon(android.R.drawable.ic_lock_idle_charging).setContentTitle(ui.getString(R.string.notification)).setContentText(ui.getString(R.string.notification_info)).setContentIntent(open).addAction(new Notification.Action.Builder(null,ui.getString(R.string.notification_stop),stop).build()).setOngoing(true).build());
  }
  public int onStartCommand(Intent i,int flags,int id){
  if(i==null || "stop".equals(i.getAction())){if(i!=null)getSharedPreferences("policy",0).edit().putString("resume_mode","observe").apply();stopSelf();return START_NOT_STICKY;}
@@ -42,5 +44,5 @@ public class Control extends Service {
  new Thread(()->{try(BufferedReader r=new BufferedReader(new InputStreamReader(process.getInputStream()))){String line;while((line=r.readLine())!=null){if(line.startsWith("DATA|")){sample=line;sampledAt=SystemClock.elapsedRealtime();String[] fields=line.split("\\|",-1); if(fields.length>=11 && "observe".equals(fields[1]) && "manual".equals(mode)){mode="observe";requested=mode;} state="数据已更新";}else{state=line;}android.util.Log.i("K70Power",line);}}catch(Exception e){state=e.toString();}finally{running=false;requested="observe";stopSelf();}},"k70-output").start();
  worker.scheduleAtFixedRate(()->{try{if(stopping)return;writer.write(mode+" "+low+" "+high+"\n");writer.flush();}catch(Exception e){state="控制通道断开，等待恢复："+e;stopSelf();}},0,2,TimeUnit.SECONDS);
  }catch(Exception e){state="Root 启动失败："+e;running=false;stopSelf();}}
- public void onDestroy(){stopping=true;worker.execute(()->{try{if(writer!=null){writer.write("stop\n");writer.flush();writer.close();}}catch(Exception ignored){} running=false;});worker.shutdown();super.onDestroy();}
+ public void onDestroy(){getSharedPreferences("policy",0).unregisterOnSharedPreferenceChangeListener(languageListener);stopping=true;worker.execute(()->{try{if(writer!=null){writer.write("stop\n");writer.flush();writer.close();}}catch(Exception ignored){} running=false;});worker.shutdown();super.onDestroy();}
 }

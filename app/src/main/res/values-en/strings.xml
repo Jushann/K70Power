@@ -1,0 +1,89 @@
+<resources>
+    <string name="mist" formatted="false">"Mist blue"</string>
+    <string name="pine" formatted="false">"Pine green"</string>
+    <string name="wisteria" formatted="false">"Wisteria"</string>
+    <string name="clay" formatted="false">"Terracotta"</string>
+    <string name="system_mode" formatted="false">"System default"</string>
+    <string name="light" formatted="false">"Light"</string>
+    <string name="dark" formatted="false">"Dark"</string>
+    <string name="cancel" formatted="false">"Cancel"</string>
+    <string name="appearance" formatted="false">"Appearance"</string>
+    <string name="mode_prefix" formatted="false">"Display mode · "</string>
+    <string name="display_mode" formatted="false">"Display mode"</string>
+    <string name="color_prefix" formatted="false">"Theme color · "</string>
+    <string name="theme_color" formatted="false">"Theme color"</string>
+    <string name="waiting_device" formatted="false">"Waiting for device data"</string>
+    <string name="cpu_wait" formatted="false">"CPU temperature · Waiting for data"</string>
+    <string name="bypass_wait" formatted="false">"Bypass active? Unknown (waiting for data)"</string>
+    <string name="history" formatted="false">" · Last reading"</string>
+    <string name="bypass" formatted="false">"Bypass active? "</string>
+    <string name="expired" formatted="false">"Unknown (reading expired)"</string>
+    <string name="yes" formatted="false">"Yes"</string>
+    <string name="no" formatted="false">"No"</string>
+    <string name="cpu_peak" formatted="false">"CPU temperature (hottest zone): "</string>
+    <string name="sensor" formatted="false">"\nSensor: "</string>
+    <string name="cpu_unavailable" formatted="false">"CPU temperature unavailable"</string>
+    <string name="battery" formatted="false">"Battery"</string>
+    <string name="net_power" formatted="false">"\nNet power  "</string>
+    <string name="level" formatted="false">"\nCharge level "</string>
+    <string name="temperature" formatted="false">"%    Temperature "</string>
+    <string name="usb" formatted="false">"USB input"</string>
+    <string name="input_power" formatted="false">"\nInput power  "</string>
+    <string name="unplugged" formatted="false">"Unplugged"</string>
+    <string name="requested" formatted="false">"Bypass requested / charging paused"</string>
+    <string name="normal" formatted="false">"Normal charging / no bypass request"</string>
+    <string name="connected" formatted="false">"connected"</string>
+    <string name="disconnected" formatted="false">"disconnected"</string>
+    <string name="seconds_ago" formatted="false">" s ago"</string>
+    <string name="stale" formatted="false">" (expired)"</string>
+    <string name="root_service" formatted="false">"\nRoot service "</string>
+    <string name="running" formatted="false">"running"</string>
+    <string name="stopped" formatted="false">"stopped"</string>
+    <string name="active" formatted="false">"active"</string>
+    <string name="inactive" formatted="false">"inactive"</string>
+    <string name="app_title" formatted="false">"Redmi Power Control"</string>
+    <string name="subtitle" formatted="false">" · Battery and power management"</string>
+    <string name="live_power" formatted="false">"Live power"</string>
+    <string name="battery_wait" formatted="false">"Battery · Waiting for data"</string>
+    <string name="bypass_unknown" formatted="false">"Bypass active? Unknown"</string>
+    <string name="hardware_note" formatted="false">"Shows the charging driver\'s control state. Confirming the physical power path requires a hardware measurement."</string>
+    <string name="usb_wait" formatted="false">"USB input · Waiting for data"</string>
+    <string name="status" formatted="false">"Status"</string>
+    <string name="connecting" formatted="false">"Connecting…"</string>
+    <string name="boot" formatted="false">"Start at boot: "</string>
+    <string name="boot_active" formatted="false">"LSPosed active. Starts after the first unlock."</string>
+    <string name="boot_inactive" formatted="false">"Enable the module in LSPosed and select this app in its scope."</string>
+    <string name="controls" formatted="false">"Controls"</string>
+    <string name="master" formatted="false">"Bypass control"</string>
+    <string name="master_hint" formatted="false">"Enable to control charging when plugged in. Disable to resume charging."</string>
+    <string name="settings" formatted="false">"Settings"</string>
+    <string name="thresholds" formatted="false">"Charge thresholds"</string>
+    <string name="range_toggle" formatted="false">"Use charge thresholds"</string>
+    <string name="range_hint" formatted="false">"Enable to use N and M. Disable to request bypass when plugged in."</string>
+    <string name="resume_at" formatted="false">"Resume charging · N%"</string>
+    <string name="bypass_at" formatted="false">"Request bypass · M%"</string>
+    <string name="save" formatted="false">"Save thresholds"</string>
+    <string name="cycle_hint" formatted="false">"When first enabled or reconnected below M%, the battery charges to M%. Bypass is then requested until the battery falls to N%."</string>
+    <string name="monitor_info" formatted="false">"Monitoring and help"</string>
+    <string name="monitor_start" formatted="false">"Start monitoring"</string>
+    <string name="monitor_stop" formatted="false">"Stop and resume charging"</string>
+    <string name="notes" formatted="false">"Readings refresh every 2 seconds. Power is estimated from voltage × current. The driver determines battery current polarity. Confirming physical bypass requires a hardware measurement.\nThreshold mode uses N and M. Other control modes require at least 25% charge. At 45°C the module releases its charging pause. System thermal protection remains active.\nAfter the first unlock, the module restores monitoring and its saved mode if enabled in LSPosed. Include this app in the module scope, allow system autostart and grant root access in KernelSU."</string>
+    <string name="version" formatted="false">"Power management · v0.13"</string>
+    <string name="power" formatted="false">"Power"</string>
+    <string name="socrates" formatted="false">"Redmi K60 Pro · Experimental"</string>
+    <string name="myron" formatted="false">"Redmi K90 Pro Max · Experimental"</string>
+    <string name="peridot" formatted="false">"Redmi Turbo 3 / POCO F6 · Experimental"</string>
+    <string name="invalid_low" formatted="false">"Enter a whole number from 1 to 75"</string>
+    <string name="invalid_high" formatted="false">"Enter a whole number from 76 to 100"</string>
+    <string name="saved" formatted="false">"Thresholds saved"</string>
+    <string name="invalid_number" formatted="false">"Enter a whole-number percentage"</string>
+    <string name="rule_start" formatted="false">"Saved: ≤ "</string>
+    <string name="rule_middle" formatted="false">"% resume charging → ≥ "</string>
+    <string name="rule_end" formatted="false">"% request bypass"</string>
+    <string name="language_title" formatted="false">"Language / 界面语言"</string>
+    <string name="language_label" formatted="false">"Language · English / 简体中文"</string>
+    <string name="channel" formatted="false">"Charging control"</string>
+    <string name="notification" formatted="false">"Redmi power monitoring is active"</string>
+    <string name="notification_info" formatted="false">"Sampling every 2 seconds. Stop to resume charging."</string>
+    <string name="notification_stop" formatted="false">"Stop and resume"</string>
+</resources>
